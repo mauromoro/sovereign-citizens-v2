@@ -229,6 +229,35 @@ const SovereignCitizens = () => {
         </div>
       </header>
 
+      {/* Top Navigation */}
+      <nav className="bg-white border-b border-gray-200 sticky top-0 z-10">
+        <div className="max-w-4xl mx-auto px-4">
+          <div className="flex justify-around py-3">
+            {[
+              { id: 'marketplace', icon: Search, label: 'Marketplace' },
+              { id: 'dashboard', icon: Coins, label: 'Dashboard' },
+              { id: 'governance', icon: Vote, label: 'Governance' },
+              { id: 'messages', icon: MessageCircle, label: 'Messages' },
+              { id: 'whitepaper', icon: FileText, label: 'White Paper' }, 
+              { id: 'settings', icon: Settings, label: 'Settings' }
+            ].map(({ id, icon: Icon, label }) => (
+              <button
+                key={id}
+                onClick={() => setActiveTab(id)}
+                className={`flex flex-col items-center py-2 px-3 rounded-md transition-colors min-w-0 ${
+                  activeTab === id
+                    ? 'text-blue-600 bg-blue-50'
+                    : 'text-gray-600 hover:text-gray-800'
+                }`}
+              >
+                <Icon className="w-5 h-5 mb-1" />
+                <span className="text-xs text-center">{label}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+      </nav>
+
       {/* Token Dashboard */}
       {activeTab === 'dashboard' && (
         <div className="max-w-4xl mx-auto px-4 py-6">
@@ -309,41 +338,12 @@ const SovereignCitizens = () => {
         </div>
       )}
 
-      {/* Bottom Navigation */}
-      <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200">
-        <div className="max-w-4xl mx-auto px-4">
-          <div className="flex justify-around py-2">
-            {[
-              { id: 'marketplace', icon: Search, label: 'Marketplace' },
-              { id: 'dashboard', icon: Coins, label: 'Dashboard' },
-              { id: 'governance', icon: Vote, label: 'Governance' },
-              { id: 'messages', icon: MessageCircle, label: 'Messages' },
-              { id: 'whitepaper', icon: FileText, label: 'White Paper' },
-              { id: 'settings', icon: Settings, label: 'Settings' }
-            ].map(({ id, icon: Icon, label }) => (
-              <button
-                key={id}
-                onClick={() => setActiveTab(id)}
-                className={`flex flex-col items-center py-2 px-3 rounded-md transition-colors ${
-                  activeTab === id
-                    ? 'text-blue-600 bg-blue-50'
-                    : 'text-gray-600 hover:text-gray-800'
-                }`}
-              >
-                <Icon className="w-5 h-5 mb-1" />
-                <span className="text-xs">{label}</span>
-              </button>
-            ))}
-          </div>
-        </div>
-      </nav>
-
       {/* White Paper */}
       {activeTab === 'whitepaper' && <WhitePaper />}
 
       {/* Placeholder for other tabs */}
       {!['marketplace', 'dashboard', 'whitepaper'].includes(activeTab) && (
-        <div className="max-w-4xl mx-auto px-4 py-6 pb-20">
+        <div className="max-w-4xl mx-auto px-4 py-6">
           <div className="bg-white rounded-lg shadow-md p-8 text-center">
             <h2 className="text-xl font-semibold mb-2 capitalize">{activeTab}</h2>
             <p className="text-gray-600">Coming soon! This section will include:</p>
