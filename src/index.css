@@ -344,17 +344,6 @@ button:hover {
   background-color: #ef4444;
 }
 
-/* Bottom navigation */
-.bottom-nav {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: white;
-  border-top: 1px solid #e5e7eb;
-  padding: 0.5rem 0;
-}
-
 .nav-item {
   display: flex;
   flex-direction: column;
