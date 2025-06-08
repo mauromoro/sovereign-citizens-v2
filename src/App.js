@@ -198,6 +198,7 @@ const SovereignCitizens = () => {
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
               <h1 className="text-2xl font-bold text-gray-800">SOVEREIGN CITIZENS</h1>
+              <img source="/public/work-in-progress.png" alt='work In Progress' className='h-8 w-auto'></img>
               {canInstall && (
                 <button
                   onClick={installPWA}
