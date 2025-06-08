@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { User, Coins, Vote, MessageCircle, Plus, Search, Settings, Wifi, WifiOff, FileText } from 'lucide-react';
 import WhitePaper from './WhitePaper'; 
+import Messages from './components/Messages';
 
 // PWA Installation prompt
 let deferredPrompt;
@@ -355,13 +356,7 @@ const SovereignCitizens = () => {
                   <li>• Community decisions</li>
                 </>
               )}
-              {activeTab === 'messages' && (
-                <>
-                  <li>• NOSTR-based messaging</li>
-                  <li>• Trade negotiations</li>
-                  <li>• Service discussions</li>
-                </>
-              )}
+              {activeTab === 'messages' && <Messages />}
               {activeTab === 'settings' && (
                 <>
                   <li>• Profile management</li>
