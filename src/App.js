@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { User, Coins, Vote, MessageCircle, Plus, Search, Settings, Wifi, WifiOff } from 'lucide-react';
+import { User, Coins, Vote, MessageCircle, Plus, Search, Settings, Wifi, WifiOff, FileText } from 'lucide-react';
+import WhitePaper from './WhitePaper'; 
 
 // PWA Installation prompt
 let deferredPrompt;
@@ -317,6 +318,7 @@ const SovereignCitizens = () => {
               { id: 'dashboard', icon: Coins, label: 'Dashboard' },
               { id: 'governance', icon: Vote, label: 'Governance' },
               { id: 'messages', icon: MessageCircle, label: 'Messages' },
+              { id: 'whitepaper', icon: FileText, label: 'White Paper' },
               { id: 'settings', icon: Settings, label: 'Settings' }
             ].map(({ id, icon: Icon, label }) => (
               <button
@@ -336,8 +338,11 @@ const SovereignCitizens = () => {
         </div>
       </nav>
 
+      {/* White Paper */}
+      {activeTab === 'whitepaper' && <WhitePaper />}
+
       {/* Placeholder for other tabs */}
-      {!['marketplace', 'dashboard'].includes(activeTab) && (
+      {!['marketplace', 'dashboard', 'whitepaper'].includes(activeTab) && (
         <div className="max-w-4xl mx-auto px-4 py-6 pb-20">
           <div className="bg-white rounded-lg shadow-md p-8 text-center">
             <h2 className="text-xl font-semibold mb-2 capitalize">{activeTab}</h2>
