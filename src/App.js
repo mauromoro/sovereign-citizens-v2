@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { User, Coins, Vote, MessageCircle, Plus, Search, Settings, Wifi, WifiOff, FileText } from 'lucide-react';
 import WhitePaper from './WhitePaper'; 
+import TheLastTransaction from './TheLastTransaction';
 import Messages from './components/Messages';
 
 // PWA Installation prompt
@@ -242,7 +243,6 @@ const SovereignCitizens = () => {
               { id: 'dashboard', icon: Coins, label: 'Dashboard' },
               { id: 'governance', icon: Vote, label: 'Governance' },
               { id: 'messages', icon: MessageCircle, label: 'Messages' },
-              { id: 'whitepaper', icon: FileText, label: 'White Paper' }, 
               { id: 'settings', icon: Settings, label: 'Settings' }
             ].map(({ id, icon: Icon, label }) => (
               <button
@@ -342,23 +342,65 @@ const SovereignCitizens = () => {
         </div>
       )}
 
+      {/* Governance Section */}
+      {activeTab === 'governance' && (
+        <div className="max-w-4xl mx-auto px-4 py-6">
+          <div className="bg-white rounded-lg shadow-md p-8">
+            <h2 className="text-xl font-semibold mb-4">Governance</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-4">
+                <h3 className="font-semibold text-gray-700">Documentation</h3>
+                <button 
+                  onClick={() => setActiveTab('whitepaper')}
+                  className="w-full bg-blue-50 border border-blue-200 rounded-lg p-4 text-left hover:bg-blue-100 transition-colors"
+                >
+                  <div className="flex items-center space-x-3">
+                    <FileText className="w-5 h-5 text-blue-600" />
+                    <div>
+                      <div className="font-medium text-blue-800">White Paper</div>
+                      <div className="text-sm text-blue-600">Read system documentation</div>
+                    </div>
+                  </div>
+                </button>
+                <button 
+                  onClick={() => setActiveTab('novel')}
+                  className="w-full bg-purple-50 border border-purple-200 rounded-lg p-4 text-left hover:bg-purple-100 transition-colors"
+                >
+                  <div className="flex items-center space-x-3">
+                    <FileText className="w-5 h-5 text-purple-600" />
+                    <div>
+                      <div className="font-medium text-purple-800">The Last Transaction</div>
+                      <div className="text-sm text-purple-600">A novel about economic revolution</div>
+                    </div>
+                  </div>
+                </button>
+              </div>
+              <div className="space-y-4">
+                <h3 className="font-semibold text-gray-700">Coming Soon</h3>
+                <ul className="text-sm text-gray-500 space-y-1">
+                  <li>• Proposal creation and voting</li>
+                  <li>• Parameter adjustments</li>
+                  <li>• Community decisions</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* White Paper */}
       {activeTab === 'whitepaper' && <WhitePaper />}
 
+      {/* The Last Transaction Novel */}
+      {activeTab === 'novel' && <TheLastTransaction />}
+
       {/* Placeholder for other tabs */}
-      {!['marketplace', 'dashboard', 'whitepaper'].includes(activeTab) && (
+      {!['marketplace', 'dashboard', 'governance', 'whitepaper', 'novel'].includes(activeTab) && (
         <div className="max-w-4xl mx-auto px-4 py-6">
           <div className="bg-white rounded-lg shadow-md p-8 text-center">
             <h2 className="text-xl font-semibold mb-2 capitalize">{activeTab}</h2>
             <p className="text-gray-600">Coming soon! This section will include:</p>
             <ul className="mt-4 text-sm text-gray-500 space-y-1">
-              {activeTab === 'governance' && (
-                <>
-                  <li>• Proposal creation and voting</li>
-                  <li>• Parameter adjustments</li>
-                  <li>• Community decisions</li>
-                </>
-              )}
               {activeTab === 'messages' && <Messages />}
               {activeTab === 'settings' && (
                 <>
